@@ -1,22 +1,24 @@
 <template>
-    <div>
-        <h1>news</h1>
-        <div v-for="user in this.$store.state.news">
-            {{user.title}}
-        </div>
-    </div>
+  <div>
+    <h1>news</h1>
+    <p v-for="item in this.$store.state.news">
+      <a v-bind:href="item.url">{{item.title}}</a>
+      <small>
+          {{item.time_ago}} by 
+          <router-link v-bind:to="`/user/${item.user}`">{{item.user}}</router-link>
+          
+        </small>
+    </p>
+  </div>
 </template>
 
 <script>
-
-
 export default {
-    created() {
-        this.$store.dispatch('FETCH_NEWS')
-    },
-}
+  created() {
+    this.$store.dispatch("FETCH_NEWS");
+  }
+};
 </script>
 
 <style>
-
 </style>
