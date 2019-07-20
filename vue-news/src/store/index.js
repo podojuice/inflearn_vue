@@ -24,7 +24,11 @@ export const store = new Vuex.Store({
 
     getters: {
         // computed와 동일한 속성, store에 있는것. 이렇게 해서 값을 넘길 수도 있다. view로
-        fetchedAsk: state => state.ask
+        fetchedAsk: state => state.ask,
+
+        fetchedItem(state) {
+            return state.item;
+        }
     },
 
 })
