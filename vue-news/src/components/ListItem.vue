@@ -8,11 +8,16 @@
         <!-- 기타 정보 영역 -->
         <div>
           <p class="news-title">
-            <a v-bind:href="item.url">{{item.title}}</a>
+            <a v-bind:href="item.url" v-if="item.domain">{{item.title}}</a>
+            <router-link v-bind:to="`item/${item.id}`" v-else>{{item.title}}</router-link>
           </p>
           <small class="link-text">
             by
-            <router-link v-bind:to="`/user/${item.user}`" class="link-text">{{item.user}}</router-link>
+            <router-link 
+            v-bind:to="`/user/${item.user}`" 
+            class="link-text" 
+            v-if="item.user" >{{item.user}}</router-link>
+            <a :href="item.url" v-else>{{item.domain}}</a>
           </small>
         </div>
       </li>
