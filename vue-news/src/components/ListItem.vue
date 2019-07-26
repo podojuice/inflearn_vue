@@ -29,7 +29,6 @@
 export default {
   created() {
     const name = this.$route.name;
-    // console.log(this.$route)
   },
   computed: {
     listItems() {

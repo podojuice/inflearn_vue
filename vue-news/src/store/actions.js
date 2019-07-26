@@ -39,7 +39,6 @@ export default {
     FETCH_ITEM({ commit }, askId) {
         fetchItem(askId)
             .then(res => {
-                console.log(res.data);
                 commit('SET_ITEM', res.data);
             })
             .catch(err => console.log(err))

@@ -12,9 +12,9 @@
           <div class="time">{{ fetchedItem.time_ago }}</div>
         </div>
       </div>
-      <h2>{{fetchedItem.title}}</h2>
+      
     </section>
-
+      <h2>{{fetchedItem.title}}</h2>
     <section>
       <!-- 답변들  -->
       <div v-html="fetchedItem.content"></div>
@@ -23,6 +23,7 @@
 </template>
 
 <script>
+import UserProfile from '../components/UserProfile.vue'
 import { mapGetters } from "vuex";
 
 export default {
@@ -32,6 +33,8 @@ export default {
   created() {
     const askId = this.$route.params.id;
     this.$store.dispatch("FETCH_ITEM", askId);
+    const userName = this.$route.params.user;
+    this.$store.dispatch('FETCH_USER', userName);
   }
 };
 </script>
