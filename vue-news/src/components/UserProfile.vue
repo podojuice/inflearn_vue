@@ -1,30 +1,25 @@
 <template>
-  <div>
-      <div class="user-container">
+  <div class="user-container">
         <div>
           <i class="fas fa-user"></i>
         </div>
         <div class="user-description">
-            <div>
-                {{ userInfo.id }}
-            </div>
-           
+            <slot name="username">
+              <!-- 상위 컴포넌트에서 정의할 영역 -->
+            </slot>
             <div class="time">
-                {{userInfo.created}}
+                <slot name="time"></slot>
+                <slot name="karma"></slot>
             </div>
+            
         </div>
       </div>
 
-
-  </div>
 </template>
 
 <script>
 export default {
     computed: {
-        userInfo() {
-          return this.$store.state.user;
-      } 
     }
 };
 </script>
