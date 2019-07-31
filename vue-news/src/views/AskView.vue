@@ -12,6 +12,9 @@ import ListItem from '../components/ListItem.vue'
 export default {
   components: {
     ListItem,
+  },
+  created() {
+    this.$store.dispatch('FETCH_ASK')
   }
   // created() {
   //   // 이 페이지가 로드될때, store에 있는 fetch_ask라는 action 실행하는 코드.

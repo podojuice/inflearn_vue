@@ -27,9 +27,6 @@
 
 <script>
 export default {
-  created() {
-    const name = this.$route.name;
-  },
   computed: {
     listItems() {
         const name = this.$route.name;
