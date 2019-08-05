@@ -14,11 +14,9 @@ export const store = new Vuex.Store({
     // 그냥 축약형으로 mutations만 써줘도 동작함
 
     state: {
-        news: [],
-        ask: [],
-        jobs: [],
         user: {},
         item: {},
+        list: [],
     },
 
 

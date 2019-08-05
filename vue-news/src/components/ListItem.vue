@@ -8,7 +8,7 @@
         <!-- 기타 정보 영역 -->
         <div>
           <p class="news-title">
-            <a v-bind:href="item.url" v-if="item.domain">{{item.title}}</a>
+            <a v-bind:href="item.url" v-if="item.domain" class="title-link">{{item.title}}</a>
             <router-link v-bind:to="`item/${item.id}`" v-else>{{item.title}}</router-link>
           </p>
           <small class="link-text">
@@ -29,17 +29,7 @@
 export default {
   computed: {
     listItems() {
-        const name = this.$route.name;
-      if (name === "news") {
-        this.$store.dispatch("FETCH_NEWS");
-        return this.$store.state.news;
-      } else if (name === "ask") {
-        this.$store.dispatch("FETCH_ASK");
-        return this.$store.state.ask;
-      } else if (name === "jobs") {
-        this.$store.dispatch("FETCH_JOBS");
-        return this.$store.state.jobs;
-      }
+      return this.$store.state.list;
     }
   }
 };
@@ -69,6 +59,10 @@ export default {
 
 .news-title {
   margin: 0;
+}
+
+.title-link {
+  overflow: hidden;
 }
 
 .link-text {

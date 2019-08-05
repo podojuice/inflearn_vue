@@ -1,11 +1,8 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
-import NewsView from '../views/NewsView.vue'
-import AskView from '../views/AskView.vue'
-import JobsView from '../views/JobsView.vue'
 import UserView from '../views/UserView.vue'
 import ItemView from '../views/ItemView.vue'
-import { join } from 'path';
+import createListView from '../views/CreateListView.js';
 
 Vue.use(VueRouter);
 
@@ -13,26 +10,29 @@ export const router = new VueRouter({
     mode: 'history',
     routes: [{
             path: '/',
-            redirect: '/news',
-
+            redirect: '/news'
         },
+
         {
             // url 주소
             path: '/news',
             // url 주소에 접근했을 때 보여줄 컴포넌트
-            component: NewsView,
+            // component: NewsView,
+            component: createListView('NewsView'),
             name: 'news',
 
         },
         {
             path: '/ask',
-            component: AskView,
+            // component: AskView,
+            component: createListView('AskView'),
             name: 'ask',
 
         },
         {
             path: '/jobs',
-            component: JobsView,
+            // component: JobsView,
+            component: createListView('JobsView'),
             name: 'jobs',
         },
         {
