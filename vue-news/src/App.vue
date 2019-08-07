@@ -64,11 +64,11 @@ a:hover {
 }
 
 /* router Transition */
-.page-enter-active,
+/* .page-enter-active,
 .page-leave-active {
-  transition: opacity 0.5s;
+  transition: 0.5s;
 }
-.page-enter, .page-leave-to /* .fade-leave-active below version 2.1.8 */ {
+.page-enter, .page-leave-to  {
   opacity: 0;
-}
+} */
 </style>
