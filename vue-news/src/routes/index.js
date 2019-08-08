@@ -26,7 +26,6 @@ export const router = new VueRouter({
                 bus.$emit('start:spinner');
                 store.dispatch('FETCH_LIST', to.name)
                     .then(res => {
-                        bus.$emit('end:spinner');
                         next();
                     })
                     .catch(err => console.log(err))
@@ -39,6 +38,15 @@ export const router = new VueRouter({
             // component: AskView,
             component: createListView('AskView'),
             name: 'ask',
+            beforeEnter: (to, from, next) => {
+                bus.$emit('start:spinner');
+                store.dispatch('FETCH_LIST', to.name)
+                    .then(res => {
+                        next();
+                    })
+                    .catch(err => console.log(err))
+
+            }
 
         },
         {
@@ -46,17 +54,41 @@ export const router = new VueRouter({
             // component: JobsView,
             component: createListView('JobsView'),
             name: 'jobs',
+            beforeEnter: (to, from, next) => {
+                bus.$emit('start:spinner');
+                store.dispatch('FETCH_LIST', to.name)
+                    .then(res => {
+                        next();
+                    })
+                    .catch(err => console.log(err))
+
+            }
         },
         {
             path: '/user/:id',
             component: UserView,
             name: 'user',
+            beforeEnter: (to, from, next) => {
+                bus.$emit('start:spinner');
+                // console.log(to.params)
+                store.dispatch('FETCH_USER', to.params.id)
+                    .then(res => {
+                        // bus.$emit('end:spinner');
+                        next();
+                    })
+                    .catch(err => console.log(err))
+
+            }
 
         },
         {
             path: '/item/:id',
             component: ItemView,
             name: 'item',
+            beforeEnter: (to, from, next) => {
+                bus.$emit("start:spinner");
+                next();
+            }
 
         },
 

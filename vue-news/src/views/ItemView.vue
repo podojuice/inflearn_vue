@@ -6,9 +6,8 @@
         <router-link slot="username" :to="`/user/${fetchedItem.user}`">{{fetchedItem.user}}</router-link>
         <template slot="time">{{ 'Posted ' + fetchedItem.time_ago}}</template>
       </user-profile>
-      
     </section>
-      <h2>{{fetchedItem.title}}</h2>
+    <h2>{{fetchedItem.title}}</h2>
     <section>
       <!-- 답변들  -->
       <div v-html="fetchedItem.content"></div>
@@ -17,12 +16,13 @@
 </template>
 
 <script>
-import UserProfile from '../components/UserProfile.vue'
+import UserProfile from "../components/UserProfile.vue";
 import { mapGetters } from "vuex";
+import ListMixin from '../mixins/ListMixin'
 
 export default {
   components: {
-    UserProfile,
+    UserProfile
   },
   computed: {
     ...mapGetters(["fetchedItem"])
@@ -30,9 +30,11 @@ export default {
   created() {
     const askId = this.$route.params.id;
     this.$store.dispatch("FETCH_ITEM", askId);
+
     const userName = this.$route.params.user;
-    this.$store.dispatch('FETCH_USER', userName);
-  }
+    this.$store.dispatch("FETCH_USER", userName);
+  },
+  mixins: [ListMixin],
 };
 </script>
 

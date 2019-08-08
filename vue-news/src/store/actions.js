@@ -16,12 +16,10 @@ export default {
             })
             .catch(err => console.log(err))
     },
-    FETCH_LIST({ commit }, pageName) {
-        return fetchList(pageName)
-            .then(res => {
-                commit('SET_LIST', res.data);
-                return res;
-            })
+    async FETCH_LIST({ commit }, pageName) {
+        const response = await fetchList(pageName);
+        commit('SET_LIST', response.data);
+        return response;
 
 
     }

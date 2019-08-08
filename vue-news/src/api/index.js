@@ -9,8 +9,14 @@ const config = {
 
 // 그리고 API 함수를 정리.
 
-function fetchNewsList() {
-    return axios.get(`${config.baseUrl}news/1.json`)
+async function fetchNewsList() {
+    try {
+        const res = await axios.get(`${config.baseUrl}news/1.json`)
+        return res;
+    } catch (err) {
+        console.log(err)
+    }
+
 }
 
 function fetchJobList() {
