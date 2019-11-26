@@ -18,9 +18,14 @@
 </template>
 
 <script>
+import ListMixin from '../mixins/ListMixin'
+
+
 export default {
     computed: {
-    }
+     
+    },
+    mixins: [ListMixin],
 };
 </script>
 
